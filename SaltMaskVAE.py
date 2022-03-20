@@ -29,10 +29,10 @@ len(X_train), len(X_val), len(X_test)
 mask_set = Masks(TRAIN_MASK_DIR, X_train)
 train_loader = DataLoader(mask_set, batch_size=32, shuffle=True)
 
-#### MAB-VAE :
-# The code of the MAB-VAE is available in the library `MVAE.py` present in the repository.
-# Let us propose different type of decoders that we will use for the two first datasets. (We can't use exactly the same one for the last dataset because it is made of RGB images while the other images are binary).
-# Remark : The encoder is considered as fixed by simplicity => The latent_dim should be the same for all decoders
+# ### MAB-VAE : The code of the MAB-VAE is available in the library `MVAE.py` present in the repository. Let us
+# propose different type of decoders that we will use for the two first datasets. (We can't use exactly the same one
+# for the last dataset because it is made of RGB images while the other images are binary). Remark : The encoder is
+# considered as fixed by simplicity => The latent_dim should be the same for all decoders
 
 Decoders = nn.ModuleList([Decoder_MLP(latent_dim=100, in_channel=1, im_size=32, hiddens=[128, 256, 512]),
                           Decoder_MLP(latent_dim=100, in_channel=1, im_size=32, hiddens=[256, 512, 1024]),
@@ -45,5 +45,5 @@ Decoders = nn.ModuleList([Decoder_MLP(latent_dim=100, in_channel=1, im_size=32, 
 MVAE = MabVAE(train_loader, Decoders, eps=0.3, i=0)
 
 # Use the GPU for making computations faster
-trainer = Trainer(gpus=1, max_epochs=5)
+trainer = Trainer(gpus=0, max_epochs=5)
 trainer.fit(MVAE)

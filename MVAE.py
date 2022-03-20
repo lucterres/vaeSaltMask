@@ -2,15 +2,12 @@ import torch
 import numpy as np
 from torch import nn
 import torch.nn.functional as F
-from torch.utils import data
-from torch.autograd import Variable
 from torch.utils.data import DataLoader, random_split
-from torchvision import datasets, transforms, utils
+from torchvision import utils
 from collections import OrderedDict
 import matplotlib.pyplot as plt
 import warnings
 import pytorch_lightning as pl
-from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
 
