@@ -1,7 +1,10 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from pytorch_lightning import Trainer
+from torch.utils.data import DataLoader
 from MVAE import *
 from SeismicT import *
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -44,6 +47,6 @@ Decoders = nn.ModuleList([Decoder_MLP(latent_dim=100, in_channel=1, im_size=32, 
 # Creation of a MabVAE instance
 MVAE = MabVAE(train_loader, Decoders, eps=0.3, i=0)
 
-# Use the GPU for making computations faster
+
 trainer = Trainer(gpus=0, max_epochs=5)
 trainer.fit(MVAE)

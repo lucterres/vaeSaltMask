@@ -1,15 +1,13 @@
-import torch
-import numpy as np
-from torch import nn
-import torch.nn.functional as F
-from torch.utils.data import DataLoader, random_split
-from torchvision import utils
-from collections import OrderedDict
-import matplotlib.pyplot as plt
 import warnings
+from collections import OrderedDict
+
+import matplotlib.pyplot as plt
+import numpy as np
 import pytorch_lightning as pl
-from pytorch_lightning.callbacks import ModelCheckpoint
-from pytorch_lightning.loggers import TensorBoardLogger
+import torch
+import torch.nn.functional as F
+from torch import nn
+from torchvision import utils
 
 warnings.simplefilter("ignore")
 
