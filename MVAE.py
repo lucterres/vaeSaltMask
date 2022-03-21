@@ -223,7 +223,7 @@ class Decoder_Linear_Conv(pl.LightningModule):
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class MabVAE(pl.LightningModule):
-    def __init__(self,train_loader,decoders,eps=0.1,i=0):
+    def __init__(self, train_loader, decoders, eps=0.1, i=0):
         super(MabVAE, self).__init__()
         '''
             

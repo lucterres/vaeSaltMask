@@ -3,12 +3,11 @@ from torch.utils.data import Dataset
 from torchvision import transforms as tv
 from PIL import Image
 
-
 class Seismic(Dataset):
-    def __init__(self, img_root, mask_root, X, transform=None):
+    def __init__(self, img_root, mask_root, x_db, transform=None):
         self.img_dir = img_root
         self.mask_dir = mask_root
-        self.X = X
+        self.X = x_db
         self.transform = transform
 
     def __len__(self):
@@ -44,9 +43,9 @@ class Seismic(Dataset):
 
 
 class Masks(Dataset):
-    def __init__(self, mask_root, DbX):
+    def __init__(self, mask_root, x_db):
         self.mask_dir = mask_root
-        self.X = DbX
+        self.X = x_db
 
     def __len__(self):
         return len(self.X)
